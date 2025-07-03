@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import { fetchReviews,postReview } from "../../store/features/reviewSlice";
 import dynamic from 'next/dynamic';
 import Chatbot from '../../components/SimpleChatbot'
+
 const Eventmap = dynamic(() => import('../../components/EventMap'), { ssr: false });
 
 interface Review {
@@ -111,16 +112,16 @@ if (!event || !event.title) {
 console.log(reviews)
   return (
     <div className=""> <header className="bg-[rgb(39,66,109)] text-white py-4 px-6 shadow-md">
-        <h1 className="text-2xl font-bold flex flex-col-reverse items-center">EVENT MANAGEMENT</h1>
+        <h1 className="text-xl font-bold flex flex-col-reverse items-center">EVENT MANAGEMENT</h1>
       </header> 
-<div className="flex flex-row justify-around">
+<div className="md:flex flex-row justify-around">
 
-    <div className="w-[50%] ml-[74px] p-6">
+    <div className="w-[100%]  ml-0 md:w-[50%] ml-[74px] p-6">
       <div className="flex flex-row justify-between">
       
         <div>
       <h1 className="text-3xl font-bold mb-4 ">{event.title}</h1></div>  <div>
-          <button     onClick={() => setShowChat(!showChat)} >CHAT</button>
+          <button     onClick={() => setShowChat(!showChat)} className="bg-[rgb(39,66,109)] text-white px-4 py-1 rounded hover:bg-gray-700 mb-8" >CHAT</button>
      
         </div></div>
       <p className="text-gray-600 mb-2">
@@ -128,8 +129,11 @@ console.log(reviews)
       </p>
       <p className="text-xl mb-4">Price: ₹{event.price}</p>
    <p className="text-[18px] mb-4">Description: {event.description}</p>
+   <div className="flex flex-col justify-between">
+    <div className="w-[100%] flex flex-col md:flex-row items-center justify-between ">
+  
       <button
-        className="bg-[rgb(39,66,109)] text-white px-4 py-2 rounded hover:bg-gray-700 mb-8"
+        className="w-[93%] bg-[rgb(39,66,109)] text-white px-4 py-2 rounded hover:bg-gray-700 mb-8 md:w-[54%] lg:w-[39%] xl:w-[30%]"
         onClick={() => {
           dispatch(addToCart(event));
           router.push("/cart");
@@ -137,8 +141,8 @@ console.log(reviews)
       >
         Add to Cart & Book
       </button>
- <button onClick={() => setLoc(!loc)}>Locations</button>
-
+ <button onClick={() => setLoc(!loc)} className="w-[93%] bg-[rgb(39,66,109)] text-white px-4 py-2 rounded hover:bg-gray-700 mb-8 md:w-[30%]">Locations</button></div>
+ </div>
 {loc && (
   event.latitude && event.longtitude &&
   !isNaN(Number(event.latitude)) &&

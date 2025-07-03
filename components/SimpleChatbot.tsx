@@ -28,7 +28,7 @@ const event = list.find((e) => String(e.id) === String(id));
   }
 
   return (
-    <div className="w-[100%] m-[41px] p-4 bg-[rgb(220,239,255)] shadow-md rounded">
+    <div className="w-[92%] mx-[15px]  bg-[rgb(220,239,255)] shadow-md rounded md:w-[100%] m-[41px] p-4 ">
       <h2 className="text-xl font-bold mb-4">Chatbot</h2>
       <div className="h-[8rem] overflow-y-auto border p-2 mb-4 border-white" >
         {messages.map((msg, idx) => (
