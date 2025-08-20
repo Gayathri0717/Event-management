@@ -5,7 +5,7 @@ import { removeFromCart, clearCart } from '../store/features/cartSlice'
 import { postBookings } from '../store/features/bookingSlice'
 import { useRouter } from 'next/router'
 import { useSession } from "next-auth/react";
-
+import Link from 'next/link';
 export default function Cart() {
   const dispatch = useDispatch<AppDispatch>()
   const { items } = useSelector((state: RootState) => state.cart)
@@ -37,9 +37,13 @@ export default function Cart() {
   console.log(postBookings)
   return (
     <div>
-      <header className="bg-[rgb(39,66,109)] text-white py-4 px-6 shadow-md">
-        <h1 className="text-2xl font-bold flex flex-col-reverse items-center">EVENT MANAGEMENT</h1>
-      </header>
+    <header className="bg-[rgb(39,66,109)] text-white py-4 px-6 shadow-md">
+  <Link href="/" passHref>
+    <h1 className="text-2xl font-bold flex flex-col-reverse items-center cursor-pointer hover:text-gray-300 transition">
+      EVENT MANAGEMENT
+    </h1>
+  </Link>
+</header>
 
       <div className="max-w-3xl mx-auto p-6">
         <h1 className="text-2xl font-bold mb-6">YOUR BOOKING CARRT</h1>
@@ -66,7 +70,7 @@ export default function Cart() {
             <div className="mt-6">
               <p className="text-xl font-bold">Total: ₹{total}</p>
 
-              {session?.user && (
+              {session?.user ?(
                 <button
                   className="mt-4 bg-[rgb(39,66,109)] text-white px-6 py-2 rounded hover:bg-blue-700"
                   onClick={async () => {
@@ -105,7 +109,11 @@ export default function Cart() {
                   }}
                 >
                   Confirm Booking
-                </button>)}
+                </button>):(
+                  <p className="mt-4 text-red-600 font-semibold">
+     Please log in to confirm your booking.
+  </p>
+                )}
             </div>
           </div>
         )}

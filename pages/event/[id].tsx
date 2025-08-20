@@ -45,6 +45,7 @@ const[all,setall]=useState<all[]>([{
 console.log(boll,bol2);
   // For review form
   const [comment, setComment] = useState("");
+ 
   const [rating, setRating] = useState(5);
   const [submitError, setSubmitError] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState("");
@@ -116,7 +117,7 @@ console.log(reviews)
       </header> 
 <div className="md:flex flex-row justify-around">
 
-    <div className="w-[100%]  ml-0 md:w-[50%] ml-[74px] p-6">
+    <div className="w-[100%]  ml-0 md:w-[50%]  p-6">
       <div className="flex flex-row justify-between">
       
         <div>
@@ -187,7 +188,7 @@ console.log(reviews)
       </section>
  
       {/* Submit Review Form */}
-      {event && session?.user && (
+          {event && session?.user && (
         <section className="mt-6 border-t pt-6">
           <h3 className="text-xl font-semibold mb-2">Write a Review</h3>
           <form onSubmit={handleReviewSubmit}>

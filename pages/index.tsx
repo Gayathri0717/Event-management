@@ -36,7 +36,7 @@ export default function Home() {
     <div>
       <header className="bg-[rgb(39,66,109)]  text-white py-4 px-6 shadow-md relative flex justify-center items-center">
         {/* Centered Title */}
-        <h1 className="text-2xl font-bold">EVENT MANAGEMENT</h1>
+        <h1 className="text-larger font-bold md:text-2xl">EVENT MANAGEMENT</h1>
 
         {/* Hamburger Icon on Right */}
         <div className="absolute right-6">
